@@ -4,7 +4,7 @@
 
 #define NUM_LEDS        256
 #define MATRIX_TYPE     0
-#define BRIGHTNESS      10
+#define BRIGHTNESS      10   
 #define CURRENT_LIMIT   500
 #define COLOR_ORDER     GRB
 #define MATRIX_PIN      2
@@ -21,7 +21,7 @@ class Matrix{
         void fillAll();
         void setPixelXY(uint8_t x, uint8_t y, CRGB color);
         void setPixelXY(uint8_t x, uint8_t y, CHSV color);
-        void drawSuqare(uint8_t size);
+        void drawFilledSquare(uint8_t size);
         void clearMatrix();
         void setBrightness(uint8_t brightness);
     private:

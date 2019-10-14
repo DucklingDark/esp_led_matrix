@@ -28,7 +28,7 @@ CFastLED::CFastLED() {
 	m_nFPS = 0;
 	m_pPowerFunc = NULL;
 	m_nPowerData = 0xFFFFFFFF;
-}
+} 
 
 CLEDController &CFastLED::addLeds(CLEDController *pLed,
 									   struct CRGB *data,
