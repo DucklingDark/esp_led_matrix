@@ -5,39 +5,22 @@ Matrix *matrix;
 
 void setup() {
     matrix = new Matrix();
+    matrix->setBrightness(50);
 }
 
 void loop() {
     //matrix->drawZigZag();
     //matrix->drawMatrix();
-    matrix->drawFilledSquare(1);
-    delay(100);
-    matrix->drawFilledSquare(2);
-    delay(100);
-    matrix->drawFilledSquare(3);
-    delay(100);
-    matrix->drawFilledSquare(4);
-    delay(100);
-    matrix->drawFilledSquare(5);
-    delay(100);
-    matrix->drawFilledSquare(6);
-    delay(100);
-    matrix->drawFilledSquare(7);
-    delay(100);
-    matrix->drawFilledSquare(8);
-    delay(100);
-    matrix->drawFilledSquare(7);
-    delay(100);
-    matrix->drawFilledSquare(6);
-    delay(100);
-    matrix->drawFilledSquare(5);
-    delay(100);
-    matrix->drawFilledSquare(4);
-    delay(100);
-    matrix->drawFilledSquare(3);
-    delay(100);
-    matrix->drawFilledSquare(2);
-    delay(100);
-    matrix->drawFilledSquare(0);
-    delay(100);
+
+    for (int i = 1; i < 9; i++){
+        matrix->clearMatrix();
+        matrix->drawCenterSquare(i, false, CRGB(50, 0, 0));
+        delay(100);
+    }
+
+    for (int i = 8; i > 0; i--){
+        matrix->clearMatrix();
+        matrix->drawCenterSquare(i, false, CRGB(50, 0, 0));
+        delay(100);
+    }
 }

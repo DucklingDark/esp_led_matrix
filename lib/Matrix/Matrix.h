@@ -13,22 +13,33 @@
 #define CENTER_X        7
 #define CENTER_Y        7
 
+struct Point{
+    uint8_t x;
+    uint8_t y;
+
+    Point(uint8_t x_, uint8_t y_){
+        x = x_;
+        y = y_;
+    }
+};
+
 class Matrix{
     public :
         Matrix();
         void drawZigZag();
         void drawMatrix();
         void fillAll();
-        void setPixelXY(uint8_t x, uint8_t y, CRGB color);
-        void setPixelXY(uint8_t x, uint8_t y, CHSV color);
-        void drawFilledSquare(uint8_t size);
+        void setPixelXY(Point point, CRGB color);
+        void setPixelXY(Point point, CHSV color);
+        void drawCenterSquare(uint8_t size, bool filled = false, CRGB color = CRGB(0,0,0));
         void clearMatrix();
         void setBrightness(uint8_t brightness);
     private:
         CRGB getRandomRGB_();
         CHSV getRandomHSV_();
-        uint8_t getPixelNum_(uint8_t x, uint8_t y);
+        uint8_t getPixelNum_(Point point);
         void wait_(uint32_t time);
+        void show_();
 
         CRGBArray<NUM_LEDS> leds_;
         uint8_t  hue_           = 255;
