@@ -62,4 +62,5 @@ class Matrix{
         uint8_t  blue_          = 0;
         CRGB color_;
         uint8_t imageStage_     = 0;
+        int8_t imageDiv_        = 1;
 };

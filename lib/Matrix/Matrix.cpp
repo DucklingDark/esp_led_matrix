@@ -140,10 +140,14 @@ void Matrix::drawPackman(uint8_t x){
         }
     }
 
-    imageStage_++;
+    imageStage_ += imageDiv_;
 
-    if (imageStage_ == 3){
-        imageStage_ = 0;
+    if (imageStage_ == 2){
+        imageDiv_ = -1;
+    }
+
+    if (imageStage_ == 0){
+        imageDiv_ = 1;
     }
 
     show_();
