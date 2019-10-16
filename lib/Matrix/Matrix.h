@@ -1,6 +1,7 @@
 #pragma once
 #include <Arduino.h>
 #include "../FastLED/FastLED.h"
+#include "Pacman.h"
 
 #define NUM_LEDS        256
 #define MATRIX_TYPE     0
@@ -17,6 +18,11 @@ struct Point{
     uint8_t x;
     uint8_t y;
 
+    Point(){
+        x = 0;
+        y = 0;
+    }
+
     Point(uint8_t x_, uint8_t y_){
         x = x_;
         y = y_;
@@ -28,18 +34,24 @@ class Matrix{
         Matrix();
         void drawZigZag();
         void drawMatrix();
-        void fillAll();
+        void fillAll(CRGB color);
         void setPixelXY(Point point, CRGB color);
-        void setPixelXY(Point point, CHSV color);
         void drawCenterSquare(uint8_t size, bool filled = false, CRGB color = CRGB(0,0,0));
-        void clearMatrix();
+        void drawSquare(Point strartPoint, uint8_t size = 1, bool filled = false);
+        void drawRectangle();
+        void clearMatrix(bool show = false);
         void setBrightness(uint8_t brightness);
+        void setColor(CRGB color);
+        void drawPackman(uint8_t x);
+        void showChanges();
     private:
         CRGB getRandomRGB_();
-        CHSV getRandomHSV_();
         uint8_t getPixelNum_(Point point);
         void wait_(uint32_t time);
         void show_();
+        void drawByCoordinates_(Point start, Point end);
+        void drawXLine_(uint8_t x, uint8_t y, uint8_t size);
+        void drawYLine_(uint8_t x, uint8_t y, uint8_t size);
 
         CRGBArray<NUM_LEDS> leds_;
         uint8_t  hue_           = 255;
@@ -48,4 +60,6 @@ class Matrix{
         uint8_t  red_           = 0;
         uint8_t  green_         = 0;
         uint8_t  blue_          = 0;
+        CRGB color_;
+        uint8_t imageStage_     = 0;
 };
